@@ -6,8 +6,7 @@ class TopViewController: UIViewController {
     // MARK: - Properties
 
     // MARK: - View Elements
-    let pushButton = UIButton(type: .system)
-    let presentButton = UIButton(type: .system)
+    let textField = UITextField()
 
     // MARK: - Initializers
     init() {
