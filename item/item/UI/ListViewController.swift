@@ -1,3 +1,4 @@
+
 import UIKit
 
 class ListViewController: UIViewController {
@@ -67,7 +68,7 @@ class ListViewController: UIViewController {
     
     fileprivate func request(query: String) {
         guard let encodeQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
-        let searchUrl = "https://auctions.yahooapis.jp/AuctionWebService/V2/json/search?appid=dj0zaiZpPU1aMWppaDVwUFFSTSZzPWNvbnN1bWVyc2VjcmV0Jng9MTc-&results=20&query="
+        let searchUrl = "https://auctions.yahooapis.jp/AuctionWebService/V2/json/search?appid=dj0zaiZpPU1aMWppaDVwUFFSTSZzPWNvbnN1bWVyc2VjcmV0Jng9MTc-&results=50&query="
 
         let url = searchUrl + encodeQuery
         ApiClient.request(url: url, completion: { data, res, error in
@@ -84,20 +85,32 @@ extension ListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return items.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return ItemCell(item: items[indexPath.row])
+        if indexPath.row == items.count {
+            return ItemListCell(items: items)
+        } else {
+            return ItemCell(item: items[indexPath.row])
+        }
     }
 
 }
 
 // MARK: - UITableViewDelegate
 extension ListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == items.count {
+            return CGFloat(items.count/2) * (UIScreen.main.bounds.width/2)
+        } else {
+            return UITableViewAutomaticDimension
+        }
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewController = ItemViewController(item: items[indexPath.row])
-        navigationController?.pushViewController(viewController, animated: true)
+//        let viewController = ItemViewController(item: items[indexPath.row])
+//        navigationController?.pushViewController(viewController, animated: true)
     }
 }
 

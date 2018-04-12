@@ -24,6 +24,8 @@
 		BA4D5ADA1DAD088400EBE01A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA4D5AD61DAD088400EBE01A /* Info.plist */; };
 		BA4D5ADB1DAD088400EBE01A /* itemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4D5AD71DAD088400EBE01A /* itemTests.swift */; };
 		BA6637961FA45CA30077A049 /* TopViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6637951FA45CA30077A049 /* TopViewControllerTests.swift */; };
+		BA70EAAB207F7E11008C1519 /* ItemListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA70EAAA207F7E11008C1519 /* ItemListCell.swift */; };
+		BA70EAAD207F8687008C1519 /* ImageCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA70EAAC207F8687008C1519 /* ImageCollectionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		BA4D5AD61DAD088400EBE01A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA4D5AD71DAD088400EBE01A /* itemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = itemTests.swift; sourceTree = "<group>"; };
 		BA6637951FA45CA30077A049 /* TopViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewControllerTests.swift; sourceTree = "<group>"; };
+		BA70EAAA207F7E11008C1519 /* ItemListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListCell.swift; sourceTree = "<group>"; };
+		BA70EAAC207F8687008C1519 /* ImageCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +141,8 @@
 				BA23F7A8207E531B0093B89B /* ApiClient.swift */,
 				BA23F7AA207E53810093B89B /* ItemViewController.swift */,
 				BA23F7AC207E549B0093B89B /* ImageCell.swift */,
+				BA70EAAA207F7E11008C1519 /* ItemListCell.swift */,
+				BA70EAAC207F8687008C1519 /* ImageCollectionCell.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -292,6 +298,8 @@
 			files = (
 				BA23F7A9207E531B0093B89B /* ApiClient.swift in Sources */,
 				BA23F7AB207E53810093B89B /* ItemViewController.swift in Sources */,
+				BA70EAAB207F7E11008C1519 /* ItemListCell.swift in Sources */,
+				BA70EAAD207F8687008C1519 /* ImageCollectionCell.swift in Sources */,
 				BA23F7AD207E549B0093B89B /* ImageCell.swift in Sources */,
 				BA23F7A5207E52DA0093B89B /* Item.swift in Sources */,
 				BA23F7A3207E526E0093B89B /* ItemCell.swift in Sources */,
