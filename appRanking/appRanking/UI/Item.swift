@@ -30,13 +30,13 @@ struct Item {
         self.date = date
     }
     
-    var isStore: Bool {
+    var isPersonal: Bool {
         let keywords = ["inc", "株式会社", "corp.", "ltd", "corporation", "llc", "company"]
         for keyword in keywords {
             if artist.lowercased().contains(keyword) {
-                return true
+                return false
             }
         }
-        return false
+        return true
     }
 }

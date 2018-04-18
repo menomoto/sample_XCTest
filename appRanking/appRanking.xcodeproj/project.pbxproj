@@ -13,8 +13,6 @@
 		BA23F7A5207E52DA0093B89B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA23F7A4207E52DA0093B89B /* Item.swift */; };
 		BA23F7A7207E52F20093B89B /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA23F7A6207E52F20093B89B /* Parser.swift */; };
 		BA23F7A9207E531B0093B89B /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA23F7A8207E531B0093B89B /* ApiClient.swift */; };
-		BA23F7AB207E53810093B89B /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA23F7AA207E53810093B89B /* ItemViewController.swift */; };
-		BA23F7AD207E549B0093B89B /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA23F7AC207E549B0093B89B /* ImageCell.swift */; };
 		BA4D5ACE1DAD060000EBE01A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4D5AC61DAD060000EBE01A /* AppDelegate.swift */; };
 		BA4D5ACF1DAD060000EBE01A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA4D5AC71DAD060000EBE01A /* Assets.xcassets */; };
 		BA4D5AD01DAD060000EBE01A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA4D5AC81DAD060000EBE01A /* LaunchScreen.storyboard */; };
@@ -24,8 +22,8 @@
 		BA4D5ADA1DAD088400EBE01A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA4D5AD61DAD088400EBE01A /* Info.plist */; };
 		BA4D5ADB1DAD088400EBE01A /* appRankingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4D5AD71DAD088400EBE01A /* appRankingTests.swift */; };
 		BA6637961FA45CA30077A049 /* TopViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6637951FA45CA30077A049 /* TopViewControllerTests.swift */; };
-		BA70EAAB207F7E11008C1519 /* ItemListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA70EAAA207F7E11008C1519 /* ItemListCell.swift */; };
-		BA70EAAD207F8687008C1519 /* ImageCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA70EAAC207F8687008C1519 /* ImageCollectionCell.swift */; };
+		BA8C8E252087AFB7006D7DE0 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8C8E242087AFB7006D7DE0 /* TopViewController.swift */; };
+		BA8C8E272087B369006D7DE0 /* GenreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8C8E262087B369006D7DE0 /* GenreType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,8 +43,6 @@
 		BA23F7A4207E52DA0093B89B /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		BA23F7A6207E52F20093B89B /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		BA23F7A8207E531B0093B89B /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
-		BA23F7AA207E53810093B89B /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
-		BA23F7AC207E549B0093B89B /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		BA4D5AA21DAD05B500EBE01A /* appRanking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = appRanking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA4D5AB61DAD05B500EBE01A /* appRankingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = appRankingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA4D5AC61DAD060000EBE01A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -58,8 +54,8 @@
 		BA4D5AD61DAD088400EBE01A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA4D5AD71DAD088400EBE01A /* appRankingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = appRankingTests.swift; sourceTree = "<group>"; };
 		BA6637951FA45CA30077A049 /* TopViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewControllerTests.swift; sourceTree = "<group>"; };
-		BA70EAAA207F7E11008C1519 /* ItemListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListCell.swift; sourceTree = "<group>"; };
-		BA70EAAC207F8687008C1519 /* ImageCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionCell.swift; sourceTree = "<group>"; };
+		BA8C8E242087AFB7006D7DE0 /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
+		BA8C8E262087B369006D7DE0 /* GenreType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,10 +135,8 @@
 				BA23F7A4207E52DA0093B89B /* Item.swift */,
 				BA23F7A6207E52F20093B89B /* Parser.swift */,
 				BA23F7A8207E531B0093B89B /* ApiClient.swift */,
-				BA23F7AA207E53810093B89B /* ItemViewController.swift */,
-				BA23F7AC207E549B0093B89B /* ImageCell.swift */,
-				BA70EAAA207F7E11008C1519 /* ItemListCell.swift */,
-				BA70EAAC207F8687008C1519 /* ImageCollectionCell.swift */,
+				BA8C8E242087AFB7006D7DE0 /* TopViewController.swift */,
+				BA8C8E262087B369006D7DE0 /* GenreType.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -297,13 +291,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA23F7A9207E531B0093B89B /* ApiClient.swift in Sources */,
-				BA23F7AB207E53810093B89B /* ItemViewController.swift in Sources */,
-				BA70EAAB207F7E11008C1519 /* ItemListCell.swift in Sources */,
-				BA70EAAD207F8687008C1519 /* ImageCollectionCell.swift in Sources */,
-				BA23F7AD207E549B0093B89B /* ImageCell.swift in Sources */,
+				BA8C8E272087B369006D7DE0 /* GenreType.swift in Sources */,
 				BA23F7A5207E52DA0093B89B /* Item.swift in Sources */,
 				BA23F7A3207E526E0093B89B /* ItemCell.swift in Sources */,
 				BA23F7A7207E52F20093B89B /* Parser.swift in Sources */,
+				BA8C8E252087AFB7006D7DE0 /* TopViewController.swift in Sources */,
 				BA4D5AD21DAD060000EBE01A /* ListViewController.swift in Sources */,
 				BA4D5ACE1DAD060000EBE01A /* AppDelegate.swift in Sources */,
 				BA4D5AD41DAD062E00EBE01A /* main.swift in Sources */,

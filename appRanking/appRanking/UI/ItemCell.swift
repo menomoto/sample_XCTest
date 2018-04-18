@@ -22,22 +22,22 @@ class ItemCell: UITableViewCell {
         itemImageView.layer.cornerRadius = 10
         itemImageView.layer.borderWidth = 0.5
         itemImageView.clipsToBounds = true
-        itemImageView.layer.borderColor = UIColor.lightGray.cgColor
+        itemImageView.layer.borderColor = UIColor(hex: "000000", alpha: 0.26).cgColor
 
         titleLabel.font = .systemFont(ofSize: 16)
 
         subTitleLabel.font = .systemFont(ofSize: 12)
-        subTitleLabel.textColor = .gray
+        subTitleLabel.textColor = UIColor(hex: "000000", alpha: 0.54)
 
         typeLabel.font = .systemFont(ofSize: 12)
-        typeLabel.textColor = .red
+        typeLabel.textColor = UIColor(hex: "ff0000", alpha: 0.87)
         typeLabel.textAlignment = .center
         typeLabel.layer.cornerRadius = 3
         typeLabel.layer.borderWidth = 1
-        typeLabel.layer.borderColor = UIColor.red.cgColor
+        typeLabel.layer.borderColor = UIColor(hex: "ff0000", alpha: 0.87).cgColor
 
         artistLabel.font = .systemFont(ofSize: 12)
-        artistLabel.textColor = .blue
+        artistLabel.textColor = UIColor(hex: "0000ff", alpha: 0.87)
         
 
         itemImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -75,15 +75,17 @@ class ItemCell: UITableViewCell {
     
     func set(item: Item) {
         itemImageView.sd_setImage(with: URL(string: item.imageUrl), completed: nil)
-        titleLabel.text = "\(item.rank) \(item.name)"
+        titleLabel.text = "\(item.rank)　\(item.name)"
         subTitleLabel.text = "\(item.category)\n\(item.artist)"
 
-        if item.isStore {
-            typeLabel.text = ""
-            typeLabel.isHidden = true
-        } else {
+        if item.isPersonal {
             typeLabel.text = "Personal?"
             typeLabel.isHidden = false
+            backgroundColor = UIColor(hex: "0000ff", alpha: 0.03)
+        } else {
+            typeLabel.text = ""
+            typeLabel.isHidden = true
+            backgroundColor = .white
         }
         artistLabel.text = item.artist
     }
@@ -93,3 +95,16 @@ class ItemCell: UITableViewCell {
     }
 }
 
+extension UIColor {
+    convenience init(hex: String, alpha: CGFloat) {
+        let v = hex.map { String($0) } + Array(repeating: "0", count: max(6 - hex.count, 0))
+        let r = CGFloat(Int(v[0] + v[1], radix: 16) ?? 0) / 255.0
+        let g = CGFloat(Int(v[2] + v[3], radix: 16) ?? 0) / 255.0
+        let b = CGFloat(Int(v[4] + v[5], radix: 16) ?? 0) / 255.0
+        self.init(red: r, green: g, blue: b, alpha: alpha)
+    }
+    
+    convenience init(hex: String) {
+        self.init(hex: hex, alpha: 1.0)
+    }
+}

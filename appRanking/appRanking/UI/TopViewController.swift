@@ -1,23 +1,22 @@
 import UIKit
 
-class ListViewController: UIViewController {
+class TopViewController: UIViewController {
     
     // MARK: - Properties
-    fileprivate(set) var items: [Item] = []
-    let genreName: String
-    let genreId: Int
-
+    let cells: [GenreType] = [.all,
+        .business, .weather, .utilities, .travel, .sports,
+        .socialNetworking, .reference, .productivity,
+        .photoAndVideo, .news, .navigation, .music,
+        .lifestyle, .healthANdFitness, .games, .finance,
+        .entertainment, .education, .books, .medical,
+        .newsstand, .catalog
+    ]
+    
     // MARK: - View Elements
     let tableView = UITableView()
-
+    
     // MARK: - Initializers
-    init(
-        genreName: String,
-        genreId: Int
-        ) {
-        self.genreName = genreName
-        self.genreId = genreId
-        
+    init() {
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -28,8 +27,7 @@ class ListViewController: UIViewController {
     // MARK: - View Controller Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        request()
+        
         addSubviews()
         configureSubviews()
         addConstraints()
@@ -42,11 +40,11 @@ class ListViewController: UIViewController {
     
     fileprivate func configureSubviews() {
         view.backgroundColor = .white
-        navigationItem.title = genreName
-        
+        navigationItem.title = "個人アプリランキング(無料)"
+        navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: .plain, target: nil, action: nil)
+
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(ItemCell.self, forCellReuseIdentifier: "ItemCell")
         tableView.estimatedRowHeight = 44
         tableView.tableFooterView = UIView()
     }
@@ -58,38 +56,34 @@ class ListViewController: UIViewController {
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-        ])
-    }
-    
-    fileprivate func request() {
-        let url = "https://itunes.apple.com/jp/rss/topfreeapplications/limit=200/genre=\(genreId)/json"
-        ApiClient.request(url: url, completion: { data, res, error in
-            self.items = Parser.ranking(data: data)
-            self.tableView.reloadData()
-        })
+            ])
     }
 }
 
 // MARK: - UITableViewDataSource
-extension ListViewController: UITableViewDataSource {
+extension TopViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return cells.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as? ItemCell else { return UITableViewCell() }
-        cell.set(item: items[indexPath.row])
+        let cell = UITableViewCell()
+        cell.textLabel?.text = cells[indexPath.row].name
+        cell.selectionStyle = .none
         return cell
     }
-
+    
 }
 
 // MARK: - UITableViewDelegate
-extension ListViewController: UITableViewDelegate {
+extension TopViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let viewController = ListViewController(genreName: cells[indexPath.row].name, genreId: cells[indexPath.row].rawValue)
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
+
