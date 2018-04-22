@@ -1,22 +1,18 @@
 import UIKit
 
-class ListViewController: UIViewController {
+class ItemViewController: UIViewController {
     
     // MARK: - Properties
-    fileprivate(set) var items: [Item] = []
-    let genreName: String
-    let genreId: Int
-
+    fileprivate(set) var item = Item()
+    
     // MARK: - View Elements
     let tableView = UITableView()
-
+    
     // MARK: - Initializers
     init(
-        genreName: String,
-        genreId: Int
+        item: Item
         ) {
-        self.genreName = genreName
-        self.genreId = genreId
+        self.item = item
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -28,7 +24,7 @@ class ListViewController: UIViewController {
     // MARK: - View Controller Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         request()
         addSubviews()
         configureSubviews()
@@ -42,11 +38,11 @@ class ListViewController: UIViewController {
     
     fileprivate func configureSubviews() {
         view.backgroundColor = .white
-        navigationItem.title = genreName
+        navigationItem.title = item.name
         
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(ItemCell.self, forCellReuseIdentifier: "ItemCell")
+        tableView.register(ImagesCell.self, forCellReuseIdentifier: "ImagesCell")
         tableView.estimatedRowHeight = 44
         tableView.tableFooterView = UIView()
     }
@@ -58,40 +54,50 @@ class ListViewController: UIViewController {
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-        ])
+            ])
     }
     
     fileprivate func request() {
-        let url = "https://itunes.apple.com/jp/rss/topfreeapplications/limit=200/genre=\(genreId)/json"
+        let url = "https://itunes.apple.com/lookup?id=\(item.id)&country=JP"
         ApiClient.request(url: url, completion: { data, res, error in
-            self.items = Parser.ranking(data: data)
+            self.item = Parser.item(data: data)
             self.tableView.reloadData()
         })
     }
 }
 
 // MARK: - UITableViewDataSource
-extension ListViewController: UITableViewDataSource {
+extension ItemViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as? ItemCell else { return UITableViewCell() }
-        cell.set(item: items[indexPath.row])
-        return cell
+        switch indexPath.row {
+        case 0:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ImagesCell", for: indexPath) as? ImagesCell else { return UITableViewCell() }
+            cell.set(images: item.images)
+            return cell
+        case 1:
+            let cell = UITableViewCell()
+            cell.textLabel?.numberOfLines = 0
+            cell.textLabel?.font = .systemFont(ofSize: 12)
+            cell.textLabel?.text = item.description
+            return cell
+        default:
+            return UITableViewCell()
+        }
     }
-
+    
 }
 
 // MARK: - UITableViewDelegate
-extension ListViewController: UITableViewDelegate {
+extension ItemViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = ItemViewController(item: items[indexPath.row])
-        navigationController?.pushViewController(vc, animated: true)
     }
 }
+

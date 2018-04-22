@@ -24,6 +24,9 @@
 		BA6637961FA45CA30077A049 /* TopViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6637951FA45CA30077A049 /* TopViewControllerTests.swift */; };
 		BA8C8E252087AFB7006D7DE0 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8C8E242087AFB7006D7DE0 /* TopViewController.swift */; };
 		BA8C8E272087B369006D7DE0 /* GenreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8C8E262087B369006D7DE0 /* GenreType.swift */; };
+		D7713EDF208B88EA00088B40 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7713EDE208B88EA00088B40 /* ItemViewController.swift */; };
+		D7713EE3208C96C700088B40 /* ImagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7713EE2208C96C700088B40 /* ImagesCell.swift */; };
+		D7713EE5208C987E00088B40 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7713EE4208C987E00088B40 /* ImageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +59,9 @@
 		BA6637951FA45CA30077A049 /* TopViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewControllerTests.swift; sourceTree = "<group>"; };
 		BA8C8E242087AFB7006D7DE0 /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		BA8C8E262087B369006D7DE0 /* GenreType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreType.swift; sourceTree = "<group>"; };
+		D7713EDE208B88EA00088B40 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
+		D7713EE2208C96C700088B40 /* ImagesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCell.swift; sourceTree = "<group>"; };
+		D7713EE4208C987E00088B40 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +106,7 @@
 		BA4D5AA41DAD05B500EBE01A /* appRanking */ = {
 			isa = PBXGroup;
 			children = (
+				D7713EE1208C966B00088B40 /* Domain */,
 				BA4D5AC51DAD060000EBE01A /* Application */,
 				BA4D5ACC1DAD060000EBE01A /* UI */,
 			);
@@ -130,11 +137,9 @@
 		BA4D5ACC1DAD060000EBE01A /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				D7713EE0208C965300088B40 /* Cell */,
+				D7713EDE208B88EA00088B40 /* ItemViewController.swift */,
 				BA4D5ACD1DAD060000EBE01A /* ListViewController.swift */,
-				BA23F7A2207E526E0093B89B /* ItemCell.swift */,
-				BA23F7A4207E52DA0093B89B /* Item.swift */,
-				BA23F7A6207E52F20093B89B /* Parser.swift */,
-				BA23F7A8207E531B0093B89B /* ApiClient.swift */,
 				BA8C8E242087AFB7006D7DE0 /* TopViewController.swift */,
 				BA8C8E262087B369006D7DE0 /* GenreType.swift */,
 			);
@@ -165,6 +170,26 @@
 				BA6637951FA45CA30077A049 /* TopViewControllerTests.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		D7713EE0208C965300088B40 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BA23F7A2207E526E0093B89B /* ItemCell.swift */,
+				D7713EE2208C96C700088B40 /* ImagesCell.swift */,
+				D7713EE4208C987E00088B40 /* ImageCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		D7713EE1208C966B00088B40 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				BA23F7A6207E52F20093B89B /* Parser.swift */,
+				BA23F7A8207E531B0093B89B /* ApiClient.swift */,
+				BA23F7A4207E52DA0093B89B /* Item.swift */,
+			);
+			path = Domain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,9 +320,12 @@
 				BA23F7A5207E52DA0093B89B /* Item.swift in Sources */,
 				BA23F7A3207E526E0093B89B /* ItemCell.swift in Sources */,
 				BA23F7A7207E52F20093B89B /* Parser.swift in Sources */,
+				D7713EE5208C987E00088B40 /* ImageCell.swift in Sources */,
+				D7713EDF208B88EA00088B40 /* ItemViewController.swift in Sources */,
 				BA8C8E252087AFB7006D7DE0 /* TopViewController.swift in Sources */,
 				BA4D5AD21DAD060000EBE01A /* ListViewController.swift in Sources */,
 				BA4D5ACE1DAD060000EBE01A /* AppDelegate.swift in Sources */,
+				D7713EE3208C96C700088B40 /* ImagesCell.swift in Sources */,
 				BA4D5AD41DAD062E00EBE01A /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

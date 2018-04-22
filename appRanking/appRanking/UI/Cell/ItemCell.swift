@@ -50,8 +50,8 @@ class ItemCell: UITableViewCell {
             itemImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
             itemImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
             itemImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15),
-            itemImageView.heightAnchor.constraint(equalToConstant: 53),
-            itemImageView.widthAnchor.constraint(equalToConstant: 53),
+            itemImageView.heightAnchor.constraint(equalToConstant: 50),
+            itemImageView.widthAnchor.constraint(equalToConstant: 50),
             
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
             titleLabel.leadingAnchor.constraint(equalTo: itemImageView.trailingAnchor, constant: 15),
