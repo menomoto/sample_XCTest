@@ -109,8 +109,8 @@ class ListViewController: UIViewController {
             typeButton.layer.borderColor = UIColor.lightGray.cgColor
         case .personal:
             typeButton.setTitle("個人\nモード\nON", for: .normal)
-            typeButton.setTitleColor(UIColor(hex: "ff0000", alpha: 0.87), for: .normal)
-            typeButton.layer.borderColor = UIColor(hex: "ff0000", alpha: 0.87).cgColor
+            typeButton.setTitleColor(UIColor(hex: "ff0000", alpha: 0.54), for: .normal)
+            typeButton.layer.borderColor = UIColor(hex: "ff0000", alpha: 0.54).cgColor
         }
     }
 }
