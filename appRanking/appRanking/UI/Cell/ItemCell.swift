@@ -2,11 +2,13 @@ import UIKit
 import SDWebImage
 
 class ItemCell: UITableViewCell {
+    fileprivate(set) var item = Item()
+    
     let itemImageView = UIImageView()
     let titleLabel = UILabel()
     let subTitleLabel = UILabel()
     let typeLabel = UILabel()
-    let artistLabel = UILabel()
+    let artistButton = UIButton(type: .system)
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -15,7 +17,7 @@ class ItemCell: UITableViewCell {
         contentView.addSubview(titleLabel)
         contentView.addSubview(subTitleLabel)
         contentView.addSubview(typeLabel)
-        contentView.addSubview(artistLabel)
+        contentView.addSubview(artistButton)
 
         selectionStyle = .none
         
@@ -36,15 +38,16 @@ class ItemCell: UITableViewCell {
         typeLabel.layer.borderWidth = 1
         typeLabel.layer.borderColor = UIColor(hex: "ff0000", alpha: 0.87).cgColor
 
-        artistLabel.font = .systemFont(ofSize: 12)
-        artistLabel.textColor = UIColor(hex: "0000ff", alpha: 0.87)
-        
+        artistButton.titleLabel?.font = .systemFont(ofSize: 12)
+        artistButton.titleLabel?.textColor = UIColor(hex: "0000ff", alpha: 0.87)
+        artistButton.titleLabel?.textAlignment = .left
+        artistButton.titleEdgeInsets = .zero
 
         itemImageView.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         subTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         typeLabel.translatesAutoresizingMaskIntoConstraints = false
-        artistLabel.translatesAutoresizingMaskIntoConstraints = false
+        artistButton.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             itemImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
@@ -61,12 +64,13 @@ class ItemCell: UITableViewCell {
             subTitleLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             subTitleLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
 
-            artistLabel.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 5),
-            artistLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            artistLabel.trailingAnchor.constraint(equalTo: typeLabel.leadingAnchor, constant: -5),
-            artistLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15),
-
-            typeLabel.topAnchor.constraint(equalTo: artistLabel.topAnchor),
+            artistButton.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 5),
+            artistButton.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            artistButton.trailingAnchor.constraint(lessThanOrEqualTo: typeLabel.leadingAnchor, constant: 5),
+            artistButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15),
+            artistButton.heightAnchor.constraint(equalToConstant: 14),
+            
+            typeLabel.topAnchor.constraint(equalTo: artistButton.topAnchor),
             typeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
             typeLabel.heightAnchor.constraint(equalToConstant: 14),
             typeLabel.widthAnchor.constraint(equalToConstant: 70),
@@ -74,6 +78,8 @@ class ItemCell: UITableViewCell {
     }
     
     func set(item: Item) {
+        self.item = item
+        
         itemImageView.sd_setImage(with: URL(string: item.imageUrl), completed: nil)
         titleLabel.text = "\(item.rank)　\(item.name)"
         subTitleLabel.text = "\(item.category)\n\(item.artist)"
@@ -87,11 +93,16 @@ class ItemCell: UITableViewCell {
             typeLabel.isHidden = true
             backgroundColor = .white
         }
-        artistLabel.text = item.artist
+        artistButton.setTitle(item.artist, for: .normal)
+        artistButton.addTarget(self, action: #selector(didTapArtistButton), for: .touchUpInside)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc fileprivate func didTapArtistButton() {
+        
     }
 }
 

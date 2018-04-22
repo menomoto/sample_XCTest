@@ -73,19 +73,23 @@ extension ItemViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.font = .systemFont(ofSize: 12)
+
         switch indexPath.row {
         case 0:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ImagesCell", for: indexPath) as? ImagesCell else { return UITableViewCell() }
-            cell.set(images: item.images)
-            return cell
+            guard let imagesCell = tableView.dequeueReusableCell(withIdentifier: "ImagesCell", for: indexPath) as? ImagesCell else { return UITableViewCell() }
+            imagesCell.set(images: item.images)
+            return imagesCell
         case 1:
-            let cell = UITableViewCell()
-            cell.textLabel?.numberOfLines = 0
-            cell.textLabel?.font = .systemFont(ofSize: 12)
+            cell.textLabel?.text = "ジャンル: \(item.genres.joined(separator: ", "))"
+            return cell
+        case 2:
             cell.textLabel?.text = item.description
             return cell
         default:
