@@ -59,6 +59,7 @@ class ListViewController: UIViewController {
         tableView.estimatedRowHeight = 40
         tableView.tableFooterView = UIView()
         
+//        typeButton.titleLabel?.font = UIFont.init(name: "HiraKakuProN-W6", size: 14)
         typeButton.titleLabel?.font = .boldSystemFont(ofSize: 14)
         typeButton.titleLabel?.numberOfLines = 3
         typeButton.titleLabel?.textAlignment = .center
@@ -108,8 +109,8 @@ class ListViewController: UIViewController {
             typeButton.layer.borderColor = UIColor.lightGray.cgColor
         case .personal:
             typeButton.setTitle("個人\nモード\nON", for: .normal)
-            typeButton.setTitleColor(.red, for: .normal)
-            typeButton.layer.borderColor = UIColor.red.cgColor
+            typeButton.setTitleColor(UIColor(hex: "ff0000", alpha: 0.87), for: .normal)
+            typeButton.layer.borderColor = UIColor(hex: "ff0000", alpha: 0.87).cgColor
         }
     }
 }
