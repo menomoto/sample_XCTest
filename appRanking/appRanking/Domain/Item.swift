@@ -13,6 +13,8 @@ struct Item {
     var category: String
     var artist: String
     var date: String
+    var rating: Int
+    var ratingCount: Int
     
     init(
         id: String = "",
@@ -26,7 +28,9 @@ struct Item {
         price: Int = 0,
         category: String = "",
         artist: String = "",
-        date: String = ""
+        date: String = "",
+        rating: Int = 0,
+        ratingCount: Int = 0
         ) {
         self.id = id
         self.genres = genres
@@ -40,12 +44,21 @@ struct Item {
         self.category = category
         self.artist = artist
         self.date = date
+        self.rating = rating
+        self.ratingCount = ratingCount
     }
     
     var isPersonal: Bool {
-        let keywords = ["inc", "株式会社", "corp.", "ltd", "corporation", "llc", "company"]
+        let keywords = [
+            "inc", "株式会社", "corp", "ltd", "corporation", "llc",
+            "company", "game", "k.k.", "法人", "apps", "ntt",
+            "conference", "limited", "llp", "s.a."
+            ]
         for keyword in keywords {
             if artist.lowercased().contains(keyword) {
+                return false
+            }
+            if artist.split(separator: " ").count != 2 {
                 return false
             }
         }

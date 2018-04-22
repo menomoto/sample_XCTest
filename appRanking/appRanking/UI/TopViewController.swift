@@ -9,7 +9,6 @@ class TopViewController: UIViewController {
         .photoAndVideo, .news, .navigation, .music,
         .lifestyle, .healthANdFitness, .games, .finance,
         .entertainment, .education, .books, .medical,
-        .newsstand, .catalog
     ]
     
     // MARK: - View Elements

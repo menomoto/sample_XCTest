@@ -86,7 +86,7 @@ class ItemCell: UITableViewCell {
 
         if item.isPersonal {
             typeLabel.text = "Personal?"
-            typeLabel.isHidden = false
+            typeLabel.isHidden = true // デザイン調整のため非表示
             backgroundColor = UIColor(hex: "0000ff", alpha: 0.03)
         } else {
             typeLabel.text = ""

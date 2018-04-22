@@ -14,7 +14,19 @@ class Parser {
                     if let value = result["description"].string {
                         item.description = value
                     }
-                    
+
+                    if let value = result["averageUserRatingForCurrentVersion"].int {
+                        item.rating = value
+                    }
+
+                    if let value = result["userRatingCountForCurrentVersion"].int {
+                        item.ratingCount = value
+                    }
+
+                    if let value = result["releaseDate"].string {
+                        item.date = value
+                    }
+
                     for (_, genre):(String, JSON) in result["genres"] {
                         item.genres.append(genre.string ?? "")
                     }

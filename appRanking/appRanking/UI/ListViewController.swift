@@ -1,14 +1,22 @@
 import UIKit
 
+enum Type {
+    case normal
+    case personal
+}
+
 class ListViewController: UIViewController {
     
     // MARK: - Properties
     fileprivate(set) var items: [Item] = []
+    fileprivate(set) var items4P: [Item] = []
     let genreName: String
     let genreId: Int
+    fileprivate(set) var type: Type = .normal
 
     // MARK: - View Elements
     let tableView = UITableView()
+    let typeButton = UIButton(type: .system)
 
     // MARK: - Initializers
     init(
@@ -38,6 +46,7 @@ class ListViewController: UIViewController {
     // MARK: - View Setup
     fileprivate func addSubviews() {
         view.addSubview(tableView)
+        view.addSubview(typeButton)
     }
     
     fileprivate func configureSubviews() {
@@ -47,17 +56,32 @@ class ListViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(ItemCell.self, forCellReuseIdentifier: "ItemCell")
-        tableView.estimatedRowHeight = 44
+        tableView.estimatedRowHeight = 40
         tableView.tableFooterView = UIView()
+        
+        typeButton.titleLabel?.font = .boldSystemFont(ofSize: 14)
+        typeButton.titleLabel?.numberOfLines = 3
+        typeButton.titleLabel?.textAlignment = .center
+        typeButton.backgroundColor = .white
+        typeButton.layer.borderWidth = 3
+        typeButton.layer.cornerRadius = 35
+        typeButton.addTarget(self, action: #selector(didTapTypeButton), for: .touchUpInside)
+        configureTypeButton()
     }
     
     fileprivate func addConstraints() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        typeButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            typeButton.heightAnchor.constraint(equalToConstant: 70),
+            typeButton.widthAnchor.constraint(equalToConstant: 70),
+            typeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+            typeButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -15),
         ])
     }
     
@@ -65,8 +89,28 @@ class ListViewController: UIViewController {
         let url = "https://itunes.apple.com/jp/rss/topfreeapplications/limit=200/genre=\(genreId)/json"
         ApiClient.request(url: url, completion: { data, res, error in
             self.items = Parser.ranking(data: data)
+            self.items4P = self.items.filter{ $0.isPersonal }
             self.tableView.reloadData()
         })
+    }
+    
+    @objc fileprivate func didTapTypeButton() {
+        type = (type == .normal) ? .personal : .normal
+        configureTypeButton()
+        tableView.reloadData()
+    }
+    
+    fileprivate func configureTypeButton() {
+        switch type {
+        case .normal:
+            typeButton.setTitle("個人\nモード\nOFF", for: .normal)
+            typeButton.setTitleColor(.lightGray, for: .normal)
+            typeButton.layer.borderColor = UIColor.lightGray.cgColor
+        case .personal:
+            typeButton.setTitle("個人\nモード\nON", for: .normal)
+            typeButton.setTitleColor(.red, for: .normal)
+            typeButton.layer.borderColor = UIColor.red.cgColor
+        }
     }
 }
 
@@ -77,12 +121,12 @@ extension ListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return type == .normal ? items.count : items4P.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as? ItemCell else { return UITableViewCell() }
-        cell.set(item: items[indexPath.row])
+        cell.set(item: type == .normal ? items[indexPath.row] : items4P[indexPath.row])
         return cell
     }
 
@@ -91,7 +135,7 @@ extension ListViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension ListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = ItemViewController(item: items[indexPath.row])
+        let vc = ItemViewController(item: type == .normal ? items[indexPath.row] : items4P[indexPath.row])
         navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -73,7 +73,7 @@ extension ItemViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -90,6 +90,12 @@ extension ItemViewController: UITableViewDataSource {
             cell.textLabel?.text = "ジャンル: \(item.genres.joined(separator: ", "))"
             return cell
         case 2:
+            cell.textLabel?.text = "評価: \(item.rating)(\(item.ratingCount))"
+            return cell
+        case 3:
+            cell.textLabel?.text = "リリース: \(item.date.prefix(10))"
+            return cell
+        case 4:
             cell.textLabel?.text = item.description
             return cell
         default:
