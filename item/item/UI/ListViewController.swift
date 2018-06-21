@@ -1,4 +1,3 @@
-
 import UIKit
 
 class ListViewController: UIViewController {
@@ -109,8 +108,8 @@ extension ListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let viewController = ItemViewController(item: items[indexPath.row])
-//        navigationController?.pushViewController(viewController, animated: true)
+        let viewController = ItemViewController(item: items[indexPath.row])
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
 

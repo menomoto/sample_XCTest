@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		404BF65520DBB6620022FB5A /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404BF65420DBB6620022FB5A /* RecommendViewController.swift */; };
 		BA23F79F207E3C440093B89B /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA23F79E207E3C440093B89B /* SDWebImage.framework */; };
 		BA23F7A1207E48870093B89B /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA23F7A0207E48870093B89B /* SwiftyJSON.framework */; };
 		BA23F7A3207E526E0093B89B /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA23F7A2207E526E0093B89B /* ItemCell.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		404BF65420DBB6620022FB5A /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
 		BA23F79E207E3C440093B89B /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
 		BA23F7A0207E48870093B89B /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		BA23F7A2207E526E0093B89B /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				BA23F7AC207E549B0093B89B /* ImageCell.swift */,
 				BA70EAAA207F7E11008C1519 /* ItemListCell.swift */,
 				BA70EAAC207F8687008C1519 /* ImageCollectionCell.swift */,
+				404BF65420DBB6620022FB5A /* RecommendViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				BA70EAAB207F7E11008C1519 /* ItemListCell.swift in Sources */,
 				BA70EAAD207F8687008C1519 /* ImageCollectionCell.swift in Sources */,
 				BA23F7AD207E549B0093B89B /* ImageCell.swift in Sources */,
+				404BF65520DBB6620022FB5A /* RecommendViewController.swift in Sources */,
 				BA23F7A5207E52DA0093B89B /* Item.swift in Sources */,
 				BA23F7A3207E526E0093B89B /* ItemCell.swift in Sources */,
 				BA23F7A7207E52F20093B89B /* Parser.swift in Sources */,
