@@ -46,7 +46,7 @@ extension ItemListCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCollectionCell", for: indexPath) as? ImageCollectionCell else { return UICollectionViewCell() }
-        cell.set(url: items[indexPath.row].imageUrl)
+//        cell.set(url: items[indexPath.row].imageUrl)
         return cell
     }
 }
