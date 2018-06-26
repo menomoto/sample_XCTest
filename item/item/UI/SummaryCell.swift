@@ -5,6 +5,7 @@ class SummaryCell: UICollectionViewCell {
     let label1 = UILabel()
     let label2 = UILabel()
     let label3 = UILabel()
+    let separator = UIView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -13,7 +14,10 @@ class SummaryCell: UICollectionViewCell {
         
 //        contentView.layer.borderWidth = 1
         contentView.addSubview(stackView)
+        contentView.addSubview(separator)
 
+        separator.backgroundColor = .red
+        
         stackView.axis = .vertical
         stackView.alignment = .center
 //        stackView.distribution = .fill
@@ -32,8 +36,9 @@ class SummaryCell: UICollectionViewCell {
 
         contentView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            contentView.widthAnchor.constraint(lessThanOrEqualToConstant: UIScreen.main.bounds.width),
-//            contentView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
+//            contentView.widthAnchor.constraint(lessThanOrEqualToConstant: UIScreen.main.bounds.width),    // OK
+            contentView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 1),  // OK
+//            contentView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),  // NG
 //            contentView.heightAnchor.constraint(equalToConstant: 300),
             ])
 
@@ -47,6 +52,15 @@ class SummaryCell: UICollectionViewCell {
 //            stackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 100),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15),
             ])
+        
+        separator.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            separator.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            separator.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            separator.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            separator.heightAnchor.constraint(equalToConstant: 2),
+            ])
+
     }
     
     required init?(coder aDecoder: NSCoder) {
