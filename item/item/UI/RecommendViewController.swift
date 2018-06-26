@@ -6,20 +6,10 @@ class RecommendViewController: UIViewController {
     fileprivate(set) var items: [Item] = []
 
     // MARK: - View Elements
-    let collectionView: UICollectionView
+    let tableView = UITableView()
 
     // MARK: - Initializers
     init() {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
-        layout.sectionInset = .zero
-        layout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize
-//        layout.estimatedItemSize = CGSize.init(width: 1, height: 1)
-
-        collectionView = UICollectionView(frame:  CGRect(origin: CGPoint.zero, size: UIScreen.main.bounds.size), collectionViewLayout: layout)
-
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -40,28 +30,21 @@ class RecommendViewController: UIViewController {
         request()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-//        collectionView.reloadData()
-    }
-
     // MARK: - View Setup
     fileprivate func addSubviews() {
-        view.addSubview(collectionView)
+        view.addSubview(tableView)
     }
 
     fileprivate func configureSubviews() {
-        collectionView.backgroundColor = .white
+        tableView.backgroundColor = .white
 
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.register(SummaryCell.self, forCellWithReuseIdentifier: "SummaryCell")
-        collectionView.register(ImageCollectionCell.self, forCellWithReuseIdentifier: "ImageCollectionCell")
+        tableView.dataSource = self
+        tableView.register(SummaryCell.self, forCellReuseIdentifier: "SummaryCell")
+        tableView.register(RecommendCell.self, forCellReuseIdentifier: "RecommendCell")
 
         let refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
-        collectionView.refreshControl = refresh
+        tableView.refreshControl = refresh
     }
 
     @objc fileprivate func didPullToRefresh() {
@@ -70,12 +53,12 @@ class RecommendViewController: UIViewController {
 
 
     fileprivate func addConstraints() {
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            collectionView.rightAnchor.constraint(equalTo: view.rightAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             ])
     }
 
@@ -88,66 +71,48 @@ class RecommendViewController: UIViewController {
         let url = "https://auctions.yahooapis.jp/AuctionWebService/V2/json/search?appid=dj0zaiZpPU1aMWppaDVwUFFSTSZzPWNvbnN1bWVyc2VjcmV0Jng9MTc-&results=100&sort=\(sort)&query=\(encodeQuery)"
         print(url)
         ApiClient.request(url: url, completion: { data, res, error in
-            self.collectionView.refreshControl?.endRefreshing()
+            self.tableView.refreshControl?.endRefreshing()
             self.items = Parser.search(data: data)
-            self.collectionView.reloadData()
-//            self.collectionView.collectionViewLayout.invalidateLayout()
+            self.tableView.reloadData()
         })
     }
 }
 
-// MARK: - UICollectionViewDelegate
-extension RecommendViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch indexPath.section {
-        case 1:
-            let vc = ItemViewController(item: items[indexPath.row])
-            navigationController?.pushViewController(vc, animated: true)
-        default:
-            return
-        }
-    }
-}
-    
-// MARK: - UICollectionViewDataSource
-extension RecommendViewController: UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+extension RecommendViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 1:
-            return items.count
+            return items.count / 2
         default:
             return 1
         }
     }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 1:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCollectionCell", for: indexPath) as? ImageCollectionCell else { return UICollectionViewCell() }
-
-            cell.set(url: items[indexPath.row].imageUrl, itemRow: indexPath.row)
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecommendCell", for: indexPath) as? RecommendCell else { return UITableViewCell() }
+            cell.set(items: recommendItems(column: 2, indexPath: indexPath), tapHandler: { [weak self] item in
+                let vc = ItemViewController.init(item: item)
+                self?.navigationController?.pushViewController(vc, animated: true)
+            })
             return cell
         default:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SummaryCell", for: indexPath) as? SummaryCell else { return SummaryCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "SummaryCell", for: indexPath) as? SummaryCell else { return UITableViewCell() }
             return cell
         }
     }
+    
+    func recommendItems(column: Int, indexPath: IndexPath) -> [Item] {
+        let index = indexPath.row * column
+        var recommends = [Item]()
+        for i in 0..<column {
+            recommends.append(items[index+i])
+        }
+        return recommends
+    }
 }
-
-//extension RecommendViewController: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        switch indexPath.section {
-//
-//        case 1:
-//            let width = UIScreen.main.bounds.width / 2
-//            return CGSize.init(width: width, height: width)
-//        default:
-//            return CGSize.init(width: UIScreen.main.bounds.width, height: 200)
-//        }
-//    }
-//}

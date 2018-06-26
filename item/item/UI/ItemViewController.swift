@@ -41,7 +41,7 @@ class ItemViewController: UIViewController {
         tableView.dataSource = self
         tableView.estimatedRowHeight = 44
         tableView.tableFooterView = UIView()
-        tableView.register(ImageCell.self, forCellReuseIdentifier: "ImageCell")
+        tableView.register(SummaryCell.self, forCellReuseIdentifier: "SummaryCell")
     }
     
     fileprivate func applyStyles() {
@@ -80,8 +80,8 @@ extension ItemViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCell", for: indexPath) as? ImageCell else { return UITableViewCell() }
-        cell.set(url: item.imageUrl)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SummaryCell", for: indexPath) as? SummaryCell else { return UITableViewCell() }
+        cell.set(item: item)
         
         return cell
     }

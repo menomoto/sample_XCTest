@@ -1,21 +1,26 @@
 import UIKit
-import SDWebImage
 
-class ImageCell: UITableViewCell {
-    let itemImageView = UIImageView()
-    
+class RecommendCell: UITableViewCell {
+    let stackView = UIStackView()
+
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        contentView.addSubview(itemImageView)
+        contentView.addSubview(stackView)
         
-        itemImageView.translatesAutoresizingMaskIntoConstraints = false
+        selectionStyle = .none
+        stackView.alignment = .center
+        stackView.axis = .horizontal
+        stackView.spacing = 15
+        
+        let stackViewHeight = (UIScreen.main.bounds.width - (15 * 3)) / 2 + 15
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            itemImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            itemImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            itemImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            itemImageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
-            itemImageView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
+            stackView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 15),
+            stackView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -15),
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15),
+            stackView.heightAnchor.constraint(equalToConstant: stackViewHeight),
             ])
     }
     
@@ -23,10 +28,16 @@ class ImageCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func set(url: String) {
-        if itemImageView.image == nil {
-            itemImageView.sd_setImage(with: URL(string: url), completed: nil)
+    func set(items: [Item], tapHandler: @escaping (Item)->() ) {
+        if stackView.subviews.count == 2 {
+            for subView in stackView.subviews {
+                subView.removeFromSuperview()
+            }
+        }
+
+        for item in items {
+            let recommendView = RecommendView(item: item, tapHandler: tapHandler)
+            stackView.addArrangedSubview(recommendView)
         }
     }
 }
-

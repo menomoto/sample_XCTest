@@ -1,15 +1,22 @@
 import UIKit
 
-class SummaryCell: UICollectionViewCell {
+class SummaryCell: UITableViewCell {
     let stackView = UIStackView()
     let label1 = UILabel()
     let label2 = UILabel()
     let label3 = UILabel()
     let separator = UIView()
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
+    func set(item: Item) {
+        label1.text = "商品名: \(item.title)"
+        label2.text = nil
+        label3.text = nil
+
+    }
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+
         backgroundColor = .white
         
 //        contentView.layer.borderWidth = 1
@@ -25,14 +32,14 @@ class SummaryCell: UICollectionViewCell {
 
         stackView.addArrangedSubview(label1)
         stackView.addArrangedSubview(label2)
-//        stackView.addArrangedSubview(label3)
+        stackView.addArrangedSubview(label3)
 //
         label1.text = "商品名: hogehogehoge"
-        label1.font = UIFont.systemFont(ofSize: 24)
+        label1.font = UIFont.systemFont(ofSize: 16)
         label2.text = "現在価格: 1,000円"
-        label2.font = UIFont.systemFont(ofSize: 24)
+        label2.font = UIFont.systemFont(ofSize: 16)
         label3.text = "即決価格: 2,000円"
-        label3.font = UIFont.systemFont(ofSize: 24)
+        label3.font = UIFont.systemFont(ofSize: 16)
 
         contentView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -44,9 +51,9 @@ class SummaryCell: UICollectionViewCell {
 
         stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-//            stackView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-//            stackView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-            stackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            stackView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            stackView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+//            stackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
 //            stackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -15)
 //            stackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 100),
