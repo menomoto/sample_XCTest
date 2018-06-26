@@ -49,7 +49,7 @@ class RecommendViewController: UIViewController {
 
         collectionView.dataSource = self
 //        collectionView.delegate = self
-        collectionView.register(DummyCell.self, forCellWithReuseIdentifier: "DummyCell")
+        collectionView.register(SummaryCell.self, forCellWithReuseIdentifier: "SummaryCell")
         collectionView.register(ImageCollectionCell.self, forCellWithReuseIdentifier: "ImageCollectionCell")
 
         let refresh = UIRefreshControl()
@@ -113,7 +113,7 @@ extension RecommendViewController: UICollectionViewDataSource {
             cell.set(url: items[indexPath.row].imageUrl, itemRow: indexPath.row)
             return cell
         default:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DummyCell", for: indexPath) as? DummyCell else { return DummyCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SummaryCell", for: indexPath) as? SummaryCell else { return SummaryCell() }
             return cell
         }
     }
