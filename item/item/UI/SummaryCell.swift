@@ -11,17 +11,18 @@ class SummaryCell: UICollectionViewCell {
         
         backgroundColor = .white
         
-        contentView.layer.borderWidth = 1
+//        contentView.layer.borderWidth = 1
         contentView.addSubview(stackView)
 
         stackView.axis = .vertical
         stackView.alignment = .center
+//        stackView.distribution = .fill
         stackView.spacing = 15
 
         stackView.addArrangedSubview(label1)
         stackView.addArrangedSubview(label2)
-        stackView.addArrangedSubview(label3)
-        
+//        stackView.addArrangedSubview(label3)
+//
         label1.text = "商品名: hogehogehoge"
         label1.font = UIFont.systemFont(ofSize: 24)
         label2.text = "現在価格: 1,000円"
@@ -31,16 +32,19 @@ class SummaryCell: UICollectionViewCell {
 
         contentView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            contentView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
-//            contentView.heightAnchor.constraint(equalToConstant: 200),
+            contentView.widthAnchor.constraint(lessThanOrEqualToConstant: UIScreen.main.bounds.width),
+//            contentView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
+//            contentView.heightAnchor.constraint(equalToConstant: 300),
             ])
 
         stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
+//            stackView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+//            stackView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
             stackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
 //            stackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -15)
-            stackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 100),
+//            stackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 100),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15),
             ])
     }

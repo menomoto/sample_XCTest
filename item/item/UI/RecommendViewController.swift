@@ -16,6 +16,7 @@ class RecommendViewController: UIViewController {
         layout.minimumInteritemSpacing = 0
         layout.sectionInset = .zero
         layout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize
+//        layout.estimatedItemSize = CGSize.init(width: 1, height: 1)
 
         collectionView = UICollectionView(frame:  CGRect(origin: CGPoint.zero, size: UIScreen.main.bounds.size), collectionViewLayout: layout)
 
@@ -90,7 +91,7 @@ class RecommendViewController: UIViewController {
             self.collectionView.refreshControl?.endRefreshing()
             self.items = Parser.search(data: data)
             self.collectionView.reloadData()
-            self.collectionView.collectionViewLayout.invalidateLayout()
+//            self.collectionView.collectionViewLayout.invalidateLayout()
         })
     }
 }
@@ -137,3 +138,16 @@ extension RecommendViewController: UICollectionViewDataSource {
         }
     }
 }
+
+//extension RecommendViewController: UICollectionViewDelegateFlowLayout {
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        switch indexPath.section {
+//
+//        case 1:
+//            let width = UIScreen.main.bounds.width / 2
+//            return CGSize.init(width: width, height: width)
+//        default:
+//            return CGSize.init(width: UIScreen.main.bounds.width, height: 200)
+//        }
+//    }
+//}
