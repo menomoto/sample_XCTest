@@ -12,13 +12,9 @@ class RecommendViewController: UIViewController {
     init() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-//        layout.minimumLineSpacing = 15
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
-//        layout.sectionInset = UIEdgeInsets(top: 15, left: 15, bottom: 0, right: 15)
         layout.sectionInset = .zero
-//        let cellHeight: CGFloat = (UIScreen.main.bounds.width / 2)
-//        layout.itemSize = CGSize.init(width: cellHeight, height: cellHeight)
         layout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize
 
         collectionView = UICollectionView(frame:  CGRect(origin: CGPoint.zero, size: UIScreen.main.bounds.size), collectionViewLayout: layout)
@@ -49,7 +45,7 @@ class RecommendViewController: UIViewController {
     }
 
     fileprivate func configureSubviews() {
-        collectionView.backgroundColor = .blue
+        collectionView.backgroundColor = .white
 
         collectionView.dataSource = self
 //        collectionView.delegate = self
@@ -96,29 +92,29 @@ class RecommendViewController: UIViewController {
 // MARK: - UICollectionViewDataSource
 extension RecommendViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return 2
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        switch section {
-//        case 1:
+        switch section {
+        case 1:
             return items.count
-//        default:
-//            return 1
-//        }
+        default:
+            return 1
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-//        switch indexPath.section {
-//        case 1:
+        switch indexPath.section {
+        case 1:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCollectionCell", for: indexPath) as? ImageCollectionCell else { return UICollectionViewCell() }
 
             cell.set(url: items[indexPath.row].imageUrl, itemRow: indexPath.row)
             return cell
-//        default:
-//            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DummyCell", for: indexPath) as? DummyCell else { return DummyCell() }
-//            return cell
-//        }
+        default:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DummyCell", for: indexPath) as? DummyCell else { return DummyCell() }
+            return cell
+        }
     }
 }

@@ -12,16 +12,11 @@ class ImageCollectionCell: UICollectionViewCell {
         
         contentView.addSubview(itemImageView)
 
-//        let cellHeight: CGFloat = ((UIScreen.main.bounds.width - (15 * 3)) / 2)
         let cellHeight: CGFloat = (UIScreen.main.bounds.width / 2) - 1
 
-        contentView.backgroundColor = .red
+        contentView.backgroundColor = .white
         contentView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-//            contentView.topAnchor.constraint(equalTo: topAnchor),
-//            contentView.leftAnchor.constraint(equalTo: leftAnchor),
-//            contentView.rightAnchor.constraint(equalTo: rightAnchor),
-//            contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
             contentView.widthAnchor.constraint(equalToConstant: cellHeight),
             contentView.heightAnchor.constraint(equalToConstant: cellHeight),
             ])
@@ -32,10 +27,6 @@ class ImageCollectionCell: UICollectionViewCell {
         itemImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             itemImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
-//            itemImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
-//            itemImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-//            itemImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-//            itemImageView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
             itemImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             cellLeftMargin,
             cellRightMargin,
@@ -59,7 +50,7 @@ class DummyCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        backgroundColor = .green
+        backgroundColor = .white
 
         contentView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
