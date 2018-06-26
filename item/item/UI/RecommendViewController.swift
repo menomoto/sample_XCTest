@@ -38,6 +38,12 @@ class RecommendViewController: UIViewController {
 
         request()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+//        collectionView.reloadData()
+    }
 
     // MARK: - View Setup
     fileprivate func addSubviews() {
@@ -48,7 +54,7 @@ class RecommendViewController: UIViewController {
         collectionView.backgroundColor = .white
 
         collectionView.dataSource = self
-//        collectionView.delegate = self
+        collectionView.delegate = self
         collectionView.register(SummaryCell.self, forCellWithReuseIdentifier: "SummaryCell")
         collectionView.register(ImageCollectionCell.self, forCellWithReuseIdentifier: "ImageCollectionCell")
 
@@ -89,6 +95,19 @@ class RecommendViewController: UIViewController {
     }
 }
 
+// MARK: - UICollectionViewDelegate
+extension RecommendViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 1:
+            let vc = ItemViewController(item: items[indexPath.row])
+            navigationController?.pushViewController(vc, animated: true)
+        default:
+            return
+        }
+    }
+}
+    
 // MARK: - UICollectionViewDataSource
 extension RecommendViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {

@@ -143,6 +143,8 @@
 				404BF65420DBB6620022FB5A /* RecommendViewController.swift */,
 				BA70EAAC207F8687008C1519 /* ImageCollectionCell.swift */,
 				D75E12D220E27A9600FC5F4A /* SummaryCell.swift */,
+				BA23F7AA207E53810093B89B /* ItemViewController.swift */,
+				BA23F7AC207E549B0093B89B /* ImageCell.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -176,8 +178,6 @@
 		D75E12D020E279A400FC5F4A /* backup */ = {
 			isa = PBXGroup;
 			children = (
-				BA23F7AA207E53810093B89B /* ItemViewController.swift */,
-				BA23F7AC207E549B0093B89B /* ImageCell.swift */,
 				BA70EAAA207F7E11008C1519 /* ItemListCell.swift */,
 				BA4D5ACD1DAD060000EBE01A /* ListViewController.swift */,
 				BA23F7A2207E526E0093B89B /* ItemCell.swift */,
@@ -245,6 +245,7 @@
 				TargetAttributes = {
 					BA4D5AA11DAD05B500EBE01A = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = R364N772A3;
 						ProvisioningStyle = Automatic;
 					};
 					BA4D5AB51DAD05B500EBE01A = {
@@ -460,6 +461,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = R364N772A3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -476,6 +478,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = R364N772A3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",

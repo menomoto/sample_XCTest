@@ -43,8 +43,8 @@ class ImageCollectionCell: UICollectionViewCell {
         numberLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             numberLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
-            numberLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            numberLabel.widthAnchor.constraint(equalToConstant: 30)
+            numberLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            numberLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor),
             ])
     }
     
