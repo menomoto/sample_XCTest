@@ -109,6 +109,7 @@ extension RecommendViewController: UITableViewDataSource {
     
     func recommendItems(column: Int, indexPath: IndexPath) -> [Item] {
         let index = indexPath.row * column
+        print(index)
         var recommends = [Item]()
         for i in 0..<column {
             recommends.append(items[index+i])
