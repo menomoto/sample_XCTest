@@ -1,25 +1,17 @@
-//
-//  ViewController.swift
-//  socketSample
-//
-//  Created by menomoto on 2018/07/11.
-//  Copyright © 2018年 menomoto. All rights reserved.
-//
-
 import UIKit
+import SocketIO
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let manager = SocketManager(socketURL: URL(string: "http://localhost:8080/")!)
+        let defaultNamespaceSocket = manager.defaultSocket
+        let swiftSocket = manager.socket(forNamespace: "/swift")
+        
+        defaultNamespaceSocket.connect()
+        swiftSocket.connect()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }
 
