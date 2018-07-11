@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		404BF65520DBB6620022FB5A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404BF65420DBB6620022FB5A /* ViewController.swift */; };
-		BA23F79F207E3C440093B89B /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA23F79E207E3C440093B89B /* SDWebImage.framework */; };
-		BA23F7A1207E48870093B89B /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA23F7A0207E48870093B89B /* SwiftyJSON.framework */; };
 		BA4D5ACE1DAD060000EBE01A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4D5AC61DAD060000EBE01A /* AppDelegate.swift */; };
 		BA4D5ACF1DAD060000EBE01A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA4D5AC71DAD060000EBE01A /* Assets.xcassets */; };
 		BA4D5AD01DAD060000EBE01A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA4D5AC81DAD060000EBE01A /* LaunchScreen.storyboard */; };
@@ -31,8 +29,6 @@
 
 /* Begin PBXFileReference section */
 		404BF65420DBB6620022FB5A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		BA23F79E207E3C440093B89B /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
-		BA23F7A0207E48870093B89B /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		BA4D5AA21DAD05B500EBE01A /* socketio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = socketio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA4D5AB61DAD05B500EBE01A /* socketioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = socketioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA4D5AC61DAD060000EBE01A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -49,8 +45,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA23F7A1207E48870093B89B /* SwiftyJSON.framework in Frameworks */,
-				BA23F79F207E3C440093B89B /* SDWebImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,8 +127,6 @@
 		BA4D5ADC1DAD09F700EBE01A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BA23F7A0207E48870093B89B /* SwiftyJSON.framework */,
-				BA23F79E207E3C440093B89B /* SDWebImage.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -252,8 +244,6 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/SDWebImage.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 			);
 			name = "Run Script";
 			outputPaths = (
@@ -408,7 +398,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.menomoto.socketio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -424,7 +414,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.menomoto.socketio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -441,7 +431,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.menomoto.socketioTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/socketio.app/socketio";
 			};
 			name = Debug;
@@ -459,7 +449,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.menomoto.socketioTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/socketio.app/socketio";
 			};
 			name = Release;
